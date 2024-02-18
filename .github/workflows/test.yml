@@ -16,6 +16,7 @@ name: Test
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   hello_world_job:
