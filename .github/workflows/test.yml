@@ -42,4 +42,4 @@ jobs:
       - name: "Read Output"
         run: |
           echo ${{steps.set-output-1.outputs.name}}
-          cat $GITHUB_TOKEN
+          echo $GITHUB_TOKEN
