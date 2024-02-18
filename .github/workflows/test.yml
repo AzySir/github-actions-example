@@ -50,10 +50,5 @@ jobs:
             });
       - name: "Read Output"
         run: |
-          fs.readFile(process.env.GITHUB_OUTPUT, 'utf8', (err, data) => {
-              if (err) {
-                console.error(err);
-                return;
-              }
-              console.log(data);
-            });
+          echo process.env.GITHUB_OUTPUT
+          cat process.env.GITHUB_OUTPUT
