@@ -52,3 +52,11 @@ jobs:
         run: |
           echo ${{steps.set-output-1.outputs.name}}
           echo $GITHUB_TOKEN
+          core.setOutput('secondStep', 'second step echo')
+          fs.readFile(process.env.GITHUB_OUTPUT, 'utf8', (err, data) => {
+              if (err) {
+                console.error(err);
+                return;
+              }
+              console.log(data);
+            });
