@@ -45,9 +45,6 @@ jobs:
               }
               console.log(data);
             });
-
-            1) First you would validate output 
-            2)
       - name: "Read Output"
         run: |
           echo process.env.GITHUB_OUTPUT
