@@ -36,3 +36,6 @@ jobs:
             console.log('------------------------')
             console.log("Trying to read GITHUB_OUTPUT")
             console.log(process.env.GITHUB_OUTPUT['name'])
+            console.log("------------------------")
+            console.log("Printing out all ENV vars")
+            console.log(process.env)
