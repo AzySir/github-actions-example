@@ -39,3 +39,6 @@ jobs:
             console.log("------------------------")
             console.log("Printing out all ENV vars")
             console.log(process.env)
+      - name: "Read Output"
+        run: |
+          cat $GITHUB_TOKEN
