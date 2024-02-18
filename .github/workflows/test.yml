@@ -21,6 +21,9 @@ on:
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        words: ["hello", "bye", "sup"]
 
     steps:
       - name: Say Hello
@@ -40,7 +43,3 @@ jobs:
             const fs = require('node:fs/promises');
             const data = await fs.readFile(process.env.GITHUB_OUTPUT, { encoding: 'utf8' }) 
             await console.log(data);
-      - name: "Read Output"
-        run: |
-          echo process.env.GITHUB_OUTPUT
-          cat process.env.GITHUB_OUTPUT
