@@ -36,10 +36,7 @@ jobs:
             console.log(`GITHUB_OUTPUT: ${process.env.GITHUB_OUTPUT}`)
             console.log('------------------------')
             console.log("Trying to read GITHUB_OUTPUT")
-            console.log(process.env.GITHUB_OUTPUT['name'])
-            console.log("------------------------")
-            console.log("Printing out all ENV vars")
-            console.log(process.env)
+            console.log(process.env.GITHUB_OUTPUT.name)
             const fs = require('node:fs');
             fs.readFile(process.env.GITHUB_OUTPUT, 'utf8', (err, data) => {
               if (err) {
@@ -48,6 +45,9 @@ jobs:
               }
               console.log(data);
             });
+
+            1) First you would validate output 
+            2)
       - name: "Read Output"
         run: |
           echo process.env.GITHUB_OUTPUT
