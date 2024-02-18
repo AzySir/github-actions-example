@@ -32,7 +32,7 @@ jobs:
             core.setOutput('name', 'Azy')
             console.log('------------------------')
             console.log("Printing out GITHUB_OUTPUT ENV Var")
-            console.log("GITHUB_OUTPUT: ${GITHUB_OUTPUT}"
+            console.log("GITHUB_OUTPUT: ${GITHUB_OUTPUT}")
             console.log('------------------------')
             console.log("Trying to read GITHUB_OUTPUT")
             console.log($GITHUB_OUTPUT['name'])
