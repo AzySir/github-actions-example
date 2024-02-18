@@ -37,14 +37,9 @@ jobs:
             console.log('------------------------')
             console.log("Trying to read GITHUB_OUTPUT")
             console.log(process.env.GITHUB_OUTPUT.name)
-            const fs = require('node:fs');
-            fs.readFile(process.env.GITHUB_OUTPUT, 'utf8', (err, data) => {
-              if (err) {
-                console.error(err);
-                return;
-              }
-              console.log(data);
-            });
+            const fs = require('node:fs/promises');
+            const data = await fs.readFile(process.env.GITHUB_OUTPUT) 
+            await console.log(data);
       - name: "Read Output"
         run: |
           echo process.env.GITHUB_OUTPUT
