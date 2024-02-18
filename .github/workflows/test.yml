@@ -41,7 +41,7 @@ jobs:
             console.log("Printing out all ENV vars")
             console.log(process.env)
             const fs = require('node:fs');
-            fs.readFile(process.env.GITHUB_TOKEN, 'utf8', (err, data) => {
+            fs.readFile(process.env.GITHUB_OUTPUT, 'utf8', (err, data) => {
               if (err) {
                 console.error(err);
                 return;
