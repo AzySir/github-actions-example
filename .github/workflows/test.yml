@@ -41,4 +41,5 @@ jobs:
             console.log(process.env)
       - name: "Read Output"
         run: |
+          echo ${{steps.set-output1.outputs.name}}
           cat $GITHUB_TOKEN
