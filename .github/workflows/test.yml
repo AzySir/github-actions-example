@@ -21,7 +21,8 @@ on:
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    outputs: ${{ matrix.words }}-export-result
+    outputs:
+      ${{ matrix.words }}-export-result: "test"
     strategy:
       matrix:
         words: ["hello", "bye", "sup"]
