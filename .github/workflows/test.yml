@@ -21,6 +21,7 @@ on:
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
+    outputs: ${{ matrix.words }}-export-result
     strategy:
       matrix:
         words: ["hello", "bye", "sup"]
@@ -31,21 +32,12 @@ jobs:
       - uses: actions/github-script@v7
         with:
           script: |
-            const { cache } = core
-            const cacheId = await cache.saveCache("teststring", "name")
-      # - uses: actions/github-script@v7
-      #   id: set-output-1
-      #   with:
-      #     result-encoding: string
-      #     script: |
-      #       console.log('Setting output NAME=AZY')
-      #       core.setOutput('name', 'Azy')
-      #       console.log('------------------------')
-      #       console.log("Printing out GITHUB_OUTPUT ENV Var")
-      #       console.log(`GITHUB_OUTPUT: ${process.env.GITHUB_OUTPUT}`)
-      #       console.log('------------------------')
-      #       console.log("Trying to read GITHUB_OUTPUT")
-      #       console.log(process.env.GITHUB_OUTPUT.name)
-      #       const fs = require('node:fs/promises');
-      #       const data = await fs.readFile(process.env.GITHUB_OUTPUT, { encoding: 'utf8' })
-      #       await console.log(data);
+            core.setOutput(${{ matrix.words }}-export-result, "test")
+  result-report:
+    runs-on: ubuntu-latest
+    needs: hello_world_job
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            console.log(${{ toJSON(needs) }})
