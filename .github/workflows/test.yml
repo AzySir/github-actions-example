@@ -17,16 +17,17 @@ name: Test
 on:
   workflow_dispatch:
   push:
+  issues:
+    types:
+      - opened
+      - edited
 
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    outputs:
-      "${{ matrix.words }}-test-output-result": ${{ steps.result-output.outputs.result }}
     strategy:
       matrix:
         words: ["hello", "bye", "sup"]
-
     steps:
       - name: Say Hello
         run: echo "Hello, World! ${{ matrix.words }}" >> results.txt
@@ -34,16 +35,4 @@ jobs:
         id: matrix-output
         with:
           script: |
-            const fs = require('node:fs/promises');
-            const data = await fs.readFile('results.txt')
-            console.log(data)
-      - run: echo "result=success" >> "$GITHUB_OUTPUT"
-        id: result-output
-  result-report:
-    runs-on: ubuntu-latest
-    needs: hello_world_job
-    steps:
-      - uses: actions/github-script@v7
-        with:
-          script: |
-            console.log(${{ toJSON(needs) }})
+            console.log(context)
