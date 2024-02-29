@@ -34,5 +34,5 @@ jobs:
         with:
           script: |
             const fs = require('node:fs/promises');
-            const data = await fs.readFile('results.txt')
+            const data = await fs.readFile('results.txt', { encoding: 'utf8' })
             console.log(data)
