@@ -22,7 +22,7 @@ jobs:
   hello_world_job:
     runs-on: ubuntu-latest
     outputs:
-      ${{ matrix.words }}-test-output-result: ${{ steps.result-output.outputs.result }}
+      "${{ matrix.words }}-test-output-result": ${{ steps.result-output.outputs.result }}
     strategy:
       matrix:
         words: ["hello", "bye", "sup"]
