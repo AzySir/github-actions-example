@@ -21,6 +21,8 @@ on:
     types:
       - opened
       - edited
+  issue_comment:
+    types: [created, edited, deleted]
 
 jobs:
   hello_world_job:
