@@ -29,16 +29,10 @@ jobs:
 
     steps:
       - name: Say Hello
-        run: echo "Hello, World!"
+        run: echo "Hello, World! ${{ matrix.words }}" >> results.txt
       - uses: actions/github-script@v7
         with:
           script: |
-            core.setOutput(`${{ matrix.words }}-export-result`, "test")
-  result-report:
-    runs-on: ubuntu-latest
-    needs: hello_world_job
-    steps:
-      - uses: actions/github-script@v7
-        with:
-          script: |
-            console.log(${{ toJSON(needs) }})
+            const fs = require('node:fs/promises');
+            const data = await fs.readFile('results.txt')
+            console.log(data)
