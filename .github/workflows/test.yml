@@ -46,6 +46,9 @@ jobs:
             const sanitizedLabels = context.payload.issue.labels.filter(label => label.name !== "success" && label.name != "failure")
             console.log(sanitizedLabels)
             const labels = Object.entries(sanitizedLabels).map(([key, value]) => ({ name: value.name }));
+            console.log("--------LABELS--------")
+            console.log(labels)
+            console.log("--------END OF LABELS--------")
             github.rest.issues.addLabels({
               owner: "AzySir",
               repo: "github-actions-example",
