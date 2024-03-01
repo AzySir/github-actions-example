@@ -43,8 +43,9 @@ jobs:
         id: new
         with:
           script: |
-            console.log([...context.payload.issue.labels.map(label => { name: label.name }), {name: "invalid"}])
-            const labels = [...context.payload.issue.labels.map(label => { name: label.name }), {name: "invalid"}]
+            const sanitizedLabels = context.payload.issue.labels.filter(label => label.name !== "success" && label.name != "failure")
+            console.log(sanitizedLabels)
+            const labels = Object.entries(sanitizedLabels).map(([key, value]) => ({ name: value.name }));
             github.rest.issues.addLabels({
               owner: "AzySir",
               repo: "github-actions-example",
