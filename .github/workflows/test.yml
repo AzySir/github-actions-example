@@ -15,12 +15,12 @@
 name: Test
 
 on:
-  workflow_dispatch:
-  push:
-  issues:
-    types:
-      - opened
-      - edited
+  # workflow_dispatch:
+  # push:
+  # issues:
+  #   types:
+  #     - opened
+  #     - edited
   issue_comment:
     types: [created, edited, deleted]
 
