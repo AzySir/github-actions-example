@@ -47,6 +47,6 @@ jobs:
             octokit.rest.issues.addLabels({
               owner: "AzySir",
               repo: "github-actions-example",
-              issue_number context.payload.issue.number: 
+              issue_number: context.payload.issue.number,
               labels
             })
