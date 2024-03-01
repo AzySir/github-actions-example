@@ -42,4 +42,4 @@ jobs:
         id: new
         with:
           script: |
-            console.log([...context.payload.issues, "mynew"])
+            console.log([...context.payload.issue.labels, "mynew"])
