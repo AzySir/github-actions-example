@@ -43,7 +43,7 @@ jobs:
         id: new
         with:
           script: |
-            console.log([...context.payload.issue.labels.map(label => { name: label.name }), {name: "invalid"]})
+            console.log([...context.payload.issue.labels.map(label => { name: label.name }), {name: "invalid"}])
             const labels = [...context.payload.issue.labels.map(label => { name: label.name }), {name: "invalid"}]
             github.rest.issues.addLabels({
               owner: "AzySir",
