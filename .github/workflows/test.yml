@@ -42,8 +42,8 @@ jobs:
         id: new
         with:
           script: |
-            console.log([...context.payload.issue.labels.map(label => { name: label.name) }, "mynew"])
-            const labels = [...context.payload.issue.labels.map(label => { name: label.name) }, "mynew"]
+            console.log([...context.payload.issue.labels.map(label => { name: label.name }), "invalid"])
+            const labels = [...context.payload.issue.labels.map(label => { name: label.name }), "invalid"]
             octokit.rest.issues.addLabels({
               owner: "AzySir",
               repo: "github-actions-example",
