@@ -50,9 +50,11 @@ jobs:
             console.log("--------LABELS--------")
             console.log(labels)
             console.log("--------END OF LABELS--------")
-            github.rest.issues.addLabels({
+            const response = await github.rest.issues.addLabels({
               owner: "AzySir",
               repo: "github-actions-example",
               issue_number: context.payload.issue.number,
               labels
             })
+            console.log(response)
+            
