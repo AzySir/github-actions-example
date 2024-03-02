@@ -45,8 +45,8 @@ jobs:
           script: |
             const sanitizedLabels = context.payload.issue.labels.filter(label => label.name !== "success" && label.name != "failure")
             console.log(sanitizedLabels)
-            const labels = sanitizedLabels.map(label => label)
-            # const labels = Object.entries(sanitizedLabels).map(([key, value]) => ({ name: value.name }));
+            const labels = sanitizedLabels.map(label => label.name)
+            // const labels = Object.entries(sanitizedLabels).map(([key, value]) => ({ name: value.name }));
             console.log("--------LABELS--------")
             console.log(labels)
             console.log("--------END OF LABELS--------")
