@@ -50,7 +50,7 @@ jobs:
             console.log("--------LABELS--------")
             console.log(labels)
             console.log("--------END OF LABELS--------")
-            const response = octokit.rest.issues.update({
+            const response = github.rest.issues.update({
               owner: "AzySir",
               repo: "github-actions-example",
               issue_number: context.payload.issue.number,
