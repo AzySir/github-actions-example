@@ -58,15 +58,23 @@ jobs:
       #       })
       #       console.log(response)
       - name: "Error Code"
+        if: ${{ matrix.words == 'hello' }}
         id: error-code
         run: exit 1
       - name: "Check failure"
-        if: always()
-        env:
-          FAILURE: ${{ failure() }}
+        if: failure()
         uses: actions/github-script@v7
         with:
           script: |
-            const result = ${FAILURE}
-            console.log(result)
+            console.log("-----------------------")
+            console.log("------ FAILURE  -------")
+            console.log("-----------------------")
+      - name: "Check failure"
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            console.log("-----------------------")
+            console.log("------ Success  -------")
+            console.log("-----------------------")
             
