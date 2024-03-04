@@ -31,30 +31,40 @@ jobs:
       matrix:
         words: ["hello", "bye", "sup"]
     steps:
-      - name: Say Hello
-        run: echo "Hello, World! ${{ matrix.words }}" >> results.txt
-      - uses: actions/github-script@v7
-        id: matrix-output
+      # - name: Say Hello
+      #   run: echo "Hello, World! ${{ matrix.words }}" >> results.txt
+      # - uses: actions/github-script@v7
+      #   id: matrix-output
+      #   with:
+      #     script: |
+      #       console.log(context)
+      #       console.log(JSON.stringify(context.payload.issue.labels))
+      # - uses: actions/github-script@v7
+      #   id: new
+      #   with:
+      #     script: |
+      #       const sanitizedLabels = context.payload.issue.labels.filter(label => label.name != "success" && label.name != "failure")
+      #       console.log(sanitizedLabels)
+      #       const labels = sanitizedLabels.map(label => label.name)
+      #       // const labels = Object.entries(sanitizedLabels).map(([key, value]) => ({ name: value.name }));
+      #       console.log("--------LABELS--------")
+      #       console.log(labels)
+      #       console.log("--------END OF LABELS--------")
+      #       const response = github.rest.issues.update({
+      #         owner: "AzySir",
+      #         repo: "github-actions-example",
+      #         issue_number: context.payload.issue.number,
+      #         labels
+      #       })
+      #       console.log(response)
+      - name: "Error Code"
+        id: error-code
+        run: exit 1
+      - name: "Check failure"
+        if: always()
+        uses: actions/github-script@v7
         with:
           script: |
-            console.log(context)
-            console.log(JSON.stringify(context.payload.issue.labels))
-      - uses: actions/github-script@v7
-        id: new
-        with:
-          script: |
-            const sanitizedLabels = context.payload.issue.labels.filter(label => label.name != "success" && label.name != "failure")
-            console.log(sanitizedLabels)
-            const labels = sanitizedLabels.map(label => label.name)
-            // const labels = Object.entries(sanitizedLabels).map(([key, value]) => ({ name: value.name }));
-            console.log("--------LABELS--------")
-            console.log(labels)
-            console.log("--------END OF LABELS--------")
-            const response = github.rest.issues.update({
-              owner: "AzySir",
-              repo: "github-actions-example",
-              issue_number: context.payload.issue.number,
-              labels
-            })
-            console.log(response)
+            const result = ${{ steps.error-code.outcome }}
+            console.log(result)
             
