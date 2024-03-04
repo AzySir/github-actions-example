@@ -70,6 +70,8 @@ jobs:
             console.log("-----------------------")
             console.log("------ Success  -------")
             console.log("-----------------------")
+            console.log(${{ jobs.hello_world_job.outcome }})
+            console.log(${{ jobs.hello_world_job.conclusion }})
 
       # - name: Say Hello
       #   run: echo "Hello, World! ${{ matrix.words }}" >> results.txt
