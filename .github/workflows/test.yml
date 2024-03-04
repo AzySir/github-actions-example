@@ -31,6 +31,46 @@ jobs:
       matrix:
         words: ["hello", "bye", "sup"]
     steps:
+      - name: "Error Code"
+        if: ${{ matrix.words == 'hello' }}
+        id: error-code
+        run: exit 1
+      - name: "Check failure"
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            console.log("-----------------------")
+            console.log("------ FAILURE  -------")
+            console.log("-----------------------")
+      - name: "Check failure"
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            console.log("-----------------------")
+            console.log("------ Success  -------")
+            console.log("-----------------------")
+  result:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Check failure"
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            console.log("-----------------------")
+            console.log("------ FAILURE  -------")
+            console.log("-----------------------")
+      - name: "Check failure"
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            console.log("-----------------------")
+            console.log("------ Success  -------")
+            console.log("-----------------------")
+
       # - name: Say Hello
       #   run: echo "Hello, World! ${{ matrix.words }}" >> results.txt
       # - uses: actions/github-script@v7
@@ -57,24 +97,3 @@ jobs:
       #         labels
       #       })
       #       console.log(response)
-      - name: "Error Code"
-        if: ${{ matrix.words == 'hello' }}
-        id: error-code
-        run: exit 1
-      - name: "Check failure"
-        if: failure()
-        uses: actions/github-script@v7
-        with:
-          script: |
-            console.log("-----------------------")
-            console.log("------ FAILURE  -------")
-            console.log("-----------------------")
-      - name: "Check failure"
-        if: success()
-        uses: actions/github-script@v7
-        with:
-          script: |
-            console.log("-----------------------")
-            console.log("------ Success  -------")
-            console.log("-----------------------")
-            
