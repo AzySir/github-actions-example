@@ -2,11 +2,10 @@ name: GNG Approval
 
 on:
   workflow_dispatch:
-
-inputs: 
-  gng:
-    description: 'Go No Go Id'
-    required: true
+    inputs: 
+      gng:
+        description: 'Go No Go Id'
+        required: true
 jobs:
   gng:
     runs-on: ubuntu-latest
