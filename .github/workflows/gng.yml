@@ -5,8 +5,8 @@ on:
 
 inputs: 
   gng:
-  description: 'Go No Go Id'
-  required: true
+    description: 'Go No Go Id'
+    required: true
 jobs:
   gng:
     runs-on: ubuntu-latest
