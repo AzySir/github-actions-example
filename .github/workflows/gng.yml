@@ -17,4 +17,4 @@ jobs:
         with:
           node-version: '18'
       - name: GNG Approval with Puppeteer
-        run: echo "node index.js --headless --gng=${{ inputs.gng }}
+        run: echo "node index.js --headless --gng=${{ inputs.gng }}"
