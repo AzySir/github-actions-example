@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs: 
       gng:
-        description: 'Go No Go Id'
+        description: 'Go / No Go Id'
         required: true
 jobs:
   gng:
