@@ -1,18 +1,4 @@
-###############################################
-#     Scope:
-#       This Action is to show the
-#       manipulation of the outputs from each job.
-#
-#     Problem Statement:
-#       When using GITHUB ACTIONS Matrix it
-#       was hard to persist some sort of data
-#       to handle in the output/result of the run
-#
-#     Potential Caveats:
-#       This may not work when the matrix steps
-#       are run in parallel
-################################################
-name: Test
+name: GNG Approval 
 
 on:
   workflow_dispatch:
