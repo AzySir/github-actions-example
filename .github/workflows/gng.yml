@@ -19,6 +19,9 @@ jobs:
         run: |
           git --help
           git remote -v
+      - name: Test new branch commit
+        run: | 
+          touch mynewfile.txt
       # - name: GNG Approval with Puppeteer
       #   run: echo "node index.js --headless --gng=${{ inputs.gng }}"
       
