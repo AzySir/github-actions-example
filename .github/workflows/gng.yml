@@ -22,6 +22,14 @@ jobs:
       - name: Test new branch commit
         run: | 
           touch mynewfile.txt
+          echo $(date) > mynewfile.txt
+          git checkout -b feat/new-branch
+          git add mynewfile.txt
+          git commit -m "Updated with new date"
+          git push
+      - name: Check GH CLI
+        runs: | 
+          gh --help
       # - name: GNG Approval with Puppeteer
       #   run: echo "node index.js --headless --gng=${{ inputs.gng }}"
       
