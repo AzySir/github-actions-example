@@ -2,10 +2,10 @@ name: GNG Approval
 
 on:
   workflow_dispatch:
-    inputs: 
-      gng:
-        description: 'Go / No Go Id'
-        required: true
+    # inputs: 
+    #   gng:
+    #     description: 'Go / No Go Id'
+    #     required: true
 jobs:
   gng:
     runs-on: ubuntu-latest
@@ -15,5 +15,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
-      - name: GNG Approval with Puppeteer
-        run: echo "node index.js --headless --gng=${{ inputs.gng }}"
+      - name: Test to see if Git Exists
+        run: |
+          git --help
+          git remote -v
+      # - name: GNG Approval with Puppeteer
+      #   run: echo "node index.js --headless --gng=${{ inputs.gng }}"
+      
