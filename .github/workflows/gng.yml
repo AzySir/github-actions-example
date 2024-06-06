@@ -28,7 +28,7 @@ jobs:
           git commit -m "Updated with new date"
           git push
       - name: Check GH CLI
-        runs: | 
+        run: | 
           gh --help
       # - name: GNG Approval with Puppeteer
       #   run: echo "node index.js --headless --gng=${{ inputs.gng }}"
